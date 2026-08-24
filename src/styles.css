@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #2d3325;
+  background: #fdfaf4;
+  font-family: Manrope, system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section-kicker {
+  display: inline-flex;
+  border-radius: 9999px;
+  border: 1px solid rgba(123, 143, 78, 0.18);
+  background: rgba(255, 255, 255, 0.84);
+  padding: 0.55rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #7b8f4e;
+}
+
+.section-title {
+  margin-top: 1.3rem;
+  max-width: 14ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.6rem, 5vw, 4.3rem);
+  line-height: 0.98;
+  color: #51623a;
+}
+
+.section-copy {
+  margin-top: 1.4rem;
+  max-width: 40rem;
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: rgba(45, 51, 37, 0.78);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-visual {
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.mobile-menu.open {
+  max-height: 20rem;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 0 1rem 1rem;
+}
+
+.floating-whatsapp {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.5rem;
+  z-index: 40;
+  display: inline-flex;
+  height: 3.75rem;
+  width: 3.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #25d366;
+  color: white;
+  box-shadow: 0 18px 32px rgba(37, 211, 102, 0.3);
+  animation: pulse 2.8s ease-in-out infinite;
+}
+
+.mobile-bottom-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 35;
+  padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(253, 250, 244, 0) 0%, rgba(253, 250, 244, 0.95) 28%, #fdfaf4 100%);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .hero-visual,
+  .floating-whatsapp,
+  .mobile-menu {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .floating-whatsapp {
+    bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .floating-whatsapp {
+    bottom: 5.8rem;
+  }
+}
